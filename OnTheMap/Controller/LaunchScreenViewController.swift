@@ -9,11 +9,7 @@
 import UIKit
 
 class LaunchScreenViewController: UIViewController {
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-    }
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         if UtlisFunctions.getFromUserDefault(key: "userkey"){
@@ -24,8 +20,4 @@ class LaunchScreenViewController: UIViewController {
             self.present(controller, animated: true, completion: nil)
         }
     }
-    
-
-    
-
 }

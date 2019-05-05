@@ -15,13 +15,9 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     @IBOutlet var mapView: MKMapView!
     var pointAnnotations = [MKPointAnnotation]()
     
-
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         mapView.delegate = self
-//        mapView.register(MKMarkerAnnotationView.self, forAnnotationViewWithReuseIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier)
         mapViewClient.getStudent { (data, error ) in
             if (data != nil) {
                 //
@@ -50,7 +46,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
             }
             else {
                 if error != nil{
-                    //                        showAlert(message: "Failed to download students locations")
+                    
                 }
             }
         }
@@ -61,60 +57,30 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     }
     
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-                let identifier = "pin"
+        let identifier = "pin"
         
-                var pinView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier) as? MKPinAnnotationView
+        var pin = mapView.dequeueReusableAnnotationView(withIdentifier: identifier) as? MKPinAnnotationView
         
-                if pinView == nil {
-                    pinView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: identifier)
-                    pinView!.canShowCallout = true
-                    pinView!.pinTintColor = .red
-                    pinView!.rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
-                }
-                else {
-                    pinView!.annotation = annotation
-                }
+        if pin == nil {
+            pin = MKPinAnnotationView(annotation: annotation, reuseIdentifier: identifier)
+            pin!.canShowCallout = true
+            pin!.pinTintColor = .red
+            pin!.rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
+        }
+        else {
+            pin!.annotation = annotation
+        }
         
-                return pinView
+        return pin
     }
     
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
         if control == view.rightCalloutAccessoryView {
-                        if let toOpen = view.annotation?.subtitle! {
-                            UIApplication.shared.open(NSURL(string: toOpen)! as URL)
-                        }
-                    }
+            if let toOpen = view.annotation?.subtitle! {
+                UIApplication.shared.open(NSURL(string: toOpen)! as URL)
+            }
+        }
         
     }
-    
-
-//    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-//
-//        let identifier = "pin"
-//
-//        var pinView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier) as? MKPinAnnotationView
-//
-//        if pinView == nil {
-//            pinView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: identifier)
-//            pinView!.canShowCallout = true
-//            pinView!.pinTintColor = .red
-//            pinView!.rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
-//        }
-//        else {
-//            pinView!.annotation = annotation
-//        }
-//
-//        return pinView
-//    }
-//
-//    func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
-//        if control == view.rightCalloutAccessoryView {
-//            if let toOpen = view.annotation?.subtitle! {
-//                UIApplication.shared.open(NSURL(string: toOpen)! as URL)
-//            }
-//        }
-//    }
-
-    
     
 }

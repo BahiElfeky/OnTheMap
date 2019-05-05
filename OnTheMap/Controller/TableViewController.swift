@@ -11,8 +11,8 @@ import UIKit
 class TableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     
-   
-   var mapViewClient = MapViewClient()
+    
+    var mapViewClient = MapViewClient()
     var studentLocations : [StudentInfo]!
     
     @IBOutlet weak var locationTableView: UITableView!
@@ -22,24 +22,21 @@ class TableViewController: UIViewController, UITableViewDelegate, UITableViewDat
         
         
         
-        }
+    }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-}
+    }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         locationTableView.delegate = self
         locationTableView.dataSource = self
-
+        
         mapViewClient.getStudent { (data, error ) in
             
             if data != nil{
                 self.studentLocations = data as! [StudentInfo]
-//                for studentLocation in data {
-//                    self.studentLocations.append(studentLocation)
-//                }
                 print(data)
                 
                 DispatchQueue.main.async {
@@ -52,9 +49,8 @@ class TableViewController: UIViewController, UITableViewDelegate, UITableViewDat
                 }
             }
             
+        }
     }
-    }
-    
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return studentLocations.count
@@ -70,7 +66,7 @@ class TableViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    UIApplication.shared.open(NSURL(string:studentLocations[indexPath.row].mediaURL)! as URL)
+        UIApplication.shared.open(NSURL(string:studentLocations[indexPath.row].mediaURL)! as URL)
     }
-
+    
 }

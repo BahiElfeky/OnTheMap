@@ -22,7 +22,7 @@ class LoginViewController: UIViewController {
                 }
             } else {
                
-                self.displayError("")
+                self.displayError("Error! Cannot login.")
             }
         }
         
@@ -31,11 +31,8 @@ class LoginViewController: UIViewController {
     @IBAction func signUpButtonAction(_ sender: Any) {
     }
     
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
     }
     func displayError(_ error: String){
         print(error)
@@ -50,7 +47,5 @@ class LoginViewController: UIViewController {
         let controller = self.storyboard?.instantiateViewController(withIdentifier: "NavigtaionController") as! UINavigationController
         self.present(controller, animated: true, completion: nil)
     }
-
-
 }
 

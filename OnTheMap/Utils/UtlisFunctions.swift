@@ -14,7 +14,7 @@ class UtlisFunctions{
         kUserDefault.set(value, forKey: key)
         print("Done!")
         kUserDefault.synchronize()
-}
+    }
     static func getFromUserDefault(key: String) -> Bool{
         let kUserDefault = UserDefaults.standard
         var bol = false
@@ -22,5 +22,16 @@ class UtlisFunctions{
             bol = true
         }
         return bol
+    }
+    static func getDataFromUserDefault(key: String) -> String {
+        let kUserDefault = UserDefaults.standard
+        return kUserDefault.string(forKey: key)!
+    }
+    static func resetDefaults() {
+        let defaults = UserDefaults.standard
+        let dictionary = defaults.dictionaryRepresentation()
+        dictionary.keys.forEach { key in
+            defaults.removeObject(forKey: key)
+        }
     }
 }

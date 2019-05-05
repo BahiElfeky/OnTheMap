@@ -11,15 +11,36 @@ import CoreLocation
 import MapKit
 
 class LocationViewController: UIViewController , MKMapViewDelegate {
-
+    
     var location : CLLocationCoordinate2D!
     var urlString : String!
     var locationString : String!
     var annotations = [MKPointAnnotation]()
+    var mapViewClient = MapViewClient()
+    
     
     @IBOutlet weak var mapView: MKMapView!
     
     @IBAction func finishButtonClicked(_ sender: Any) {
+        
+        if let locationString = locationString, let urlLink = urlString  {
+            if let lat = location?.latitude, let lng =  location?.longitude {
+                let studentLocation =  setStudentInfo(lat: lat, lng: lng, mapString: locationString, urlLink: urlLink)
+                
+                mapViewClient.postStudentLocation(studentLocation: studentLocation) { (success, message, error) in
+                    if success == true {
+                        self.dismiss(animated: true, completion: nil)
+                    }else {
+                        if error != nil || !message.isEmpty {
+                            print(message)
+                        }
+                    }
+                }
+                
+            }
+            
+        }
+        
         
     }
     
@@ -28,7 +49,7 @@ class LocationViewController: UIViewController , MKMapViewDelegate {
         mapView.delegate = self
         
     }
-
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         //mapView.reloadInputViews()
@@ -38,14 +59,12 @@ class LocationViewController: UIViewController , MKMapViewDelegate {
             addPin()
         }
     }
-    
-    
+
     func addPin(){
         let annotation = MKPointAnnotation()
         if let location = location{
             if let urlLink = urlString{
                 annotation.coordinate = location
-                annotation.title = "----"
                 annotation.subtitle = urlLink
                 
                 self.annotations.append(annotation)
@@ -83,5 +102,10 @@ class LocationViewController: UIViewController , MKMapViewDelegate {
                 UIApplication.shared.open(NSURL(string: toOpen)! as URL)
             }
         }
+    }
+    
+    func setStudentInfo (lat: Double, lng: Double, mapString: String, urlLink: String) -> StudentInfo{
+        let student = StudentInfo([Constants.firstName: "Bahi", Constants.lastName: "Elfeky", Constants.Latitude: lat, Constants.Longitude: lng, Constants.MapString: mapString, Constants.MediaURL: urlLink, Constants.SessionID: UtlisFunctions.getDataFromUserDefault(key: "usersessionid"), Constants.UpdateAt: ""])
+        return student
     }
 }

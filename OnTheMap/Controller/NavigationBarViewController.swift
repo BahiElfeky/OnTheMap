@@ -9,18 +9,16 @@
 import UIKit
 
 class NavigationBarViewController: UITabBarController {
-
+    
+    let mapViewClient = MapViewClient()
     @IBOutlet weak var addNewPin: UIBarButtonItem!
     @IBOutlet weak var logout: UIBarButtonItem!
     @IBOutlet weak var refreshButton: UIBarButtonItem!
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-    }
     
     @IBAction func logoutAction(_ sender: Any) {
         
+        UtlisFunctions.resetDefaults()
+        self.dismiss(animated: true, completion: nil)
     }
     
     @IBAction func refreshAction(_ sender: Any) {

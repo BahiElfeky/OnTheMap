@@ -25,16 +25,8 @@ class Constants {
     static let username: String = "username"
     static let password: String = "password"
     static let accesstoken: String = "access_token"
-    
-    //MARK: Methods
-    static let StudentLocations = "https://parse.udacity.com/parse/classes/StudentLocation"
-    static let SessionParm = "/session"
-    
-    //MARK:Response Keys
-
     static let Key: String = "key"
     static let Account: String = "account"
-    
     static let firstName: String = "firstName"
     static let lastName: String = "lastName"
     static let Session: String = "session"
@@ -50,10 +42,17 @@ class Constants {
     static let Error: String = "error"
     static let UpdateAt: String = "updatedAt"
     static let UpdateAtParam: String = "-updatedAt"
-    static let application_id: String = "QrX47CA9cyuGewLdsL7o5Eb8iug6Em8ye0dnAbIr"
-    static let api_key: String = "QuWThTdiRmTux3YaDseUSEpUKo7aBYM737yKd4gY"
+    
+    //MARK: URL Params
+    static let StudentLocations = "https://parse.udacity.com/parse/classes/StudentLocation"
+    static let SessionParm = "/session"
     static let limit = "limit"
     static let skip = "skip"
     static let order = "order"
+    
+    //MARK:Response Keys
+    static let application_id: String = "QrX47CA9cyuGewLdsL7o5Eb8iug6Em8ye0dnAbIr"
+    static let api_key: String = "QuWThTdiRmTux3YaDseUSEpUKo7aBYM737yKd4gY"
+    
     
 }
