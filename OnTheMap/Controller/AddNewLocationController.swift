@@ -11,20 +11,40 @@ import UIKit
 import CoreLocation
 
 class AddNewLocationController: UIViewController {
+    
+    var activityView = UIActivityIndicatorView(style: .gray)
     var lat = 0.0
     var lng = 0.0
+    var keyboard = Keyboard()
     
     @IBOutlet weak var locationTextField: UITextField!
     @IBOutlet weak var linkTextField: UITextField!
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        keyboard.configureTextField(textField: locationTextField!)
+        keyboard.configureTextField(textField: linkTextField!)
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        keyboard.subscribeToKeyboardNotifications()
+    }
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        keyboard.unsubscribeFromKeyboardNotifications()
+    }
+    
     @IBAction func findLocationAction(_ sender: Any) {
+        showActivityIndicatory()
         guard !locationTextField.text!.isEmpty, !linkTextField.text!.isEmpty else {
-            print("Loacation or Link fields are empty ")
+            self.displayAlert("Loacation or Link fields are empty ")
             return
         }
         checkLocation(address: locationTextField.text!) { (success, message, error) in
             if success == true {
                 DispatchQueue.main.async {
+                    self.activityView.stopAnimating()
                     self.performSegue(withIdentifier: "sendLocation", sender: self)
                 }
             }
@@ -38,8 +58,9 @@ class AddNewLocationController: UIViewController {
                     let placemarks = placemarks,
                     let location = placemarks.first?.location
                     else {
-                        print("Cannot Find Location")
+//                        print("Cannot Find Location")
                         completionHandler(false, "Error! fining location", error)
+                        self.displayAlert("Cannot Find Location")
                         return
                 }
                 
@@ -61,5 +82,11 @@ class AddNewLocationController: UIViewController {
     
     @IBAction func cancelButtonClicked(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
+    }
+    
+    func showActivityIndicatory() {
+        activityView.center = self.view.center
+        activityView.startAnimating()
+        self.view.addSubview(activityView)
     }
 }

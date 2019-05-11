@@ -364,7 +364,6 @@
                                 </state>
                                 <connections>
                                     <action selector="findLocationAction:" destination="bYZ-YW-WPL" eventType="touchUpInside" id="MYf-Rr-fmS"/>
-                                    <segue destination="Hnf-zn-cBd" kind="show" identifier="sendLocation" id="gsn-oX-hbp"/>
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_world" translatesAutoresizingMaskIntoConstraints="NO" id="9KI-Ls-0n3">
@@ -402,6 +401,7 @@
                     <connections>
                         <outlet property="linkTextField" destination="R2o-Jq-6sT" id="aQt-W4-F3q"/>
                         <outlet property="locationTextField" destination="qRX-xo-sMa" id="Gvw-IS-8J6"/>
+                        <segue destination="Hnf-zn-cBd" kind="show" identifier="sendLocation" id="qPx-7r-TRz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Y0m-IP-bjk" userLabel="First Responder" sceneMemberID="firstResponder"/>

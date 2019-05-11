@@ -32,7 +32,7 @@ class LocationViewController: UIViewController , MKMapViewDelegate {
                         self.dismiss(animated: true, completion: nil)
                     }else {
                         if error != nil || !message.isEmpty {
-                            print(message)
+                            self.displayAlert("Could not post your location!")
                         }
                     }
                 }
@@ -52,7 +52,7 @@ class LocationViewController: UIViewController , MKMapViewDelegate {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        //mapView.reloadInputViews()
+        mapView.reloadInputViews()
         print("location is \(String(describing: location))")
         if location?.latitude  != 0.0 && location?.longitude != 0.0 {
             

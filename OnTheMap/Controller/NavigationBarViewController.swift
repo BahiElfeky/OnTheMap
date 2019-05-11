@@ -9,16 +9,24 @@
 import UIKit
 
 class NavigationBarViewController: UITabBarController {
+    let loginClient = LoginClient()
     
-    let mapViewClient = MapViewClient()
+    
     @IBOutlet weak var addNewPin: UIBarButtonItem!
     @IBOutlet weak var logout: UIBarButtonItem!
     @IBOutlet weak var refreshButton: UIBarButtonItem!
     
     @IBAction func logoutAction(_ sender: Any) {
-        
-        UtlisFunctions.resetDefaults()
-        self.dismiss(animated: true, completion: nil)
+        loginClient.logout { (success, message, error) in
+            if success {
+                UtlisFunctions.resetDefaults()
+                self.dismiss(animated: true, completion: nil)
+            }
+            else {
+                self.displayAlert("Could not logout")
+            }
+        }
+
     }
     
     @IBAction func refreshAction(_ sender: Any) {
@@ -29,5 +37,7 @@ class NavigationBarViewController: UITabBarController {
         let cont = storyboard?.instantiateViewController(withIdentifier: "AddPinNavigation") as! UINavigationController
         self.present(cont, animated: true, completion: nil)
     }
+    
+
     
 }

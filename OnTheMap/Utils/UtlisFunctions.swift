@@ -7,7 +7,10 @@
 //
 
 import UIKit
+import CoreLocation
 class UtlisFunctions{
+    
+    
     static func saveToUserDefaults(key: String , value: String){
         let kUserDefault = UserDefaults.standard
         print(value)
@@ -34,4 +37,5 @@ class UtlisFunctions{
             defaults.removeObject(forKey: key)
         }
     }
+    
 }

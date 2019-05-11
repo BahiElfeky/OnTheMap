@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		271A5075228243A000699FA7 /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 271A5074228243A000699FA7 /* Alert.swift */; };
+		271A50772287866A00699FA7 /* keyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 271A50762287866A00699FA7 /* keyboard.swift */; };
 		273EB3AF2277691300765904 /* MapViewClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 273EB3AE2277691300765904 /* MapViewClient.swift */; };
 		273EB3B122776AA500765904 /* StudentInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 273EB3B022776AA500765904 /* StudentInfo.swift */; };
 		27AD7F7422774824001DD406 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27AD7F7322774824001DD406 /* LoginViewController.swift */; };
@@ -27,6 +29,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		271A5074228243A000699FA7 /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
+		271A50762287866A00699FA7 /* keyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = keyboard.swift; sourceTree = "<group>"; };
 		273EB3AE2277691300765904 /* MapViewClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewClient.swift; sourceTree = "<group>"; };
 		273EB3B022776AA500765904 /* StudentInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentInfo.swift; sourceTree = "<group>"; };
 		27AD7F7322774824001DD406 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -107,6 +111,8 @@
 			isa = PBXGroup;
 			children = (
 				27B5ADB4227730B10058A4F5 /* AppDelegate.swift */,
+				271A5074228243A000699FA7 /* Alert.swift */,
+				271A50762287866A00699FA7 /* keyboard.swift */,
 				279B42A5227F5539001F63E6 /* Utils */,
 				279B42A4227F542A001F63E6 /* View */,
 				279B42A3227F541C001F63E6 /* Model */,
@@ -206,12 +212,14 @@
 				273EB3AF2277691300765904 /* MapViewClient.swift in Sources */,
 				27AD7F7422774824001DD406 /* LoginViewController.swift in Sources */,
 				27AD7F7C22775A9C001DD406 /* UtlisFunctions.swift in Sources */,
+				271A5075228243A000699FA7 /* Alert.swift in Sources */,
 				27B5ADCE2277378D0058A4F5 /* LoginClient.swift in Sources */,
 				273EB3B122776AA500765904 /* StudentInfo.swift in Sources */,
 				27DB30D8227B609F007143DC /* LocationTableViewCell.swift in Sources */,
 				27DB30D6227B2F48007143DC /* AddNewLocationController.swift in Sources */,
 				27DB30DA227B7521007143DC /* LocationViewController.swift in Sources */,
 				27B5ADB5227730B10058A4F5 /* AppDelegate.swift in Sources */,
+				271A50772287866A00699FA7 /* keyboard.swift in Sources */,
 				27DB30D2227A03ED007143DC /* TableViewController.swift in Sources */,
 				27AD7F762277510A001DD406 /* MapViewController.swift in Sources */,
 				27AD7F7A22775271001DD406 /* NavigationBarViewController.swift in Sources */,

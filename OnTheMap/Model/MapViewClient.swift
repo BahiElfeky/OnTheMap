@@ -80,8 +80,6 @@ class MapViewClient {
                 print(model.capacity)
                 completionHandler(model,NSError())
                 
-                
-                
             }
             task.resume()
         }
@@ -95,22 +93,8 @@ class MapViewClient {
             request.addValue(Constants.application_id, forHTTPHeaderField: "X-Parse-Application-Id")
             request.addValue(Constants.api_key, forHTTPHeaderField: "X-Parse-REST-API-Key")
             request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-            let methodParam : [String:Any] = [
-                "\(Constants.UniqueKey)" : "1234",
-                "\(Constants.firstName)" : "\(studentLocation.firstName!)",
-                "\(Constants.lastName)": "\(studentLocation.lastName!)"
-                ,"\(Constants.MapString)": "\(studentLocation.mapString!)",
-                "\(Constants.MediaURL)": "\(studentLocation.mediaURL!)",
-                "\(Constants.Latitude)": "\(studentLocation.latitude!)",
-                "\(Constants.Longitude)": "\(studentLocation.longitude!)"
-                
-            ]
-            do {
-                request.httpBody = try? JSONSerialization.data(withJSONObject: methodParam, options: .prettyPrinted)
-                
-            } catch let error {
-                print(error.localizedDescription)
-            }
+            request.httpBody = "{ \"firstName\": \"\(studentLocation.firstName)\", \"lastName\": \"\(studentLocation.lastName)\",\"mapString\": \"\(studentLocation.mapString!)\",\"latitude\": \(studentLocation.latitude!), \"longitude\": \(studentLocation.longitude!),\"uniqueKey\": \"\(studentLocation.uniqueKey!)\", \"mediaURL\": \"\(studentLocation.mediaURL!)\"}".data(using: .utf8)
+            
             let task = URLSession.shared.dataTask(with: request) { data, response, error in
                 guard (error == nil) else {
                     completionHandler (false, "", error)

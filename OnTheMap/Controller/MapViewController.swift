@@ -46,7 +46,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
             }
             else {
                 if error != nil{
-                    
+                    self.displayAlert("Faild to load!")
                 }
             }
         }

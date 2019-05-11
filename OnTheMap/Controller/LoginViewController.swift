@@ -9,23 +9,33 @@
 import UIKit
 
 class LoginViewController: UIViewController {
-    
+    var keyboard = Keyboard()
     var share = LoginClient()
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
     @IBAction func loginButtonAction(_ sender: Any) {
-        share.loginUser(usernameLogin: emailTextField.text ?? "", passwordLogin: passwordTextField.text ?? "") { (success, errorString) in
-            if (success != nil) {
+        
+        if emailTextField.text!.isEmpty || passwordTextField.text!.isEmpty {
+            self.displayAlert("Please enter your username and password.")
+        }
+        else {
+        share.loginUser(usernameLogin: emailTextField.text!, passwordLogin: passwordTextField.text!) { (success,message,errorString) in
+            if (success != nil)
+            {
                 DispatchQueue.main.async {
                     self.completeLogin()
-                    
                 }
             } else {
-               
-                self.displayError("Error! Cannot login.")
+                if message!.contains("2xx"){
+                    self.displayAlert ("Invalid email or password")
+                }
+                else if message != nil {
+                    self.displayAlert ("Please check your internet connection")
+                }
+                
             }
         }
-        
+        }
         
     }
     @IBAction func signUpButtonAction(_ sender: Any) {
@@ -33,16 +43,19 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-    }
-    func displayError(_ error: String){
-        print(error)
-    }
-    func login(email : String , password: String) {
         
-        if email.isEmpty || password.isEmpty {
-            self.displayError("Email or Password is Empty.")
-        }
+        keyboard.configureTextField(textField: emailTextField!)
+        keyboard.configureTextField(textField: passwordTextField!)
     }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        keyboard.subscribeToKeyboardNotifications()
+    }
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        keyboard.unsubscribeFromKeyboardNotifications()
+    }
+    
     private func completeLogin(){
         let controller = self.storyboard?.instantiateViewController(withIdentifier: "NavigtaionController") as! UINavigationController
         self.present(controller, animated: true, completion: nil)
