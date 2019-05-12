@@ -73,12 +73,11 @@ class MapViewClient {
                     completionHandler(nil, NSError(domain: "studentInformation", code: 1, userInfo: userInfo))
                     return
                 }
-                var model = [StudentInfo]()
                 for dic in studentsLocationResults {
-                    model.append(StudentInfo(dic))
+                    StudentLocationModel.studentLocations.append(StudentInfo(dic))
                 }
-                print(model.capacity)
-                completionHandler(model,NSError())
+                
+                completionHandler(StudentLocationModel.studentLocations as [AnyObject],NSError())
                 
             }
             task.resume()
@@ -93,7 +92,7 @@ class MapViewClient {
             request.addValue(Constants.application_id, forHTTPHeaderField: "X-Parse-Application-Id")
             request.addValue(Constants.api_key, forHTTPHeaderField: "X-Parse-REST-API-Key")
             request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-            request.httpBody = "{ \"firstName\": \"\(studentLocation.firstName)\", \"lastName\": \"\(studentLocation.lastName)\",\"mapString\": \"\(studentLocation.mapString!)\",\"latitude\": \(studentLocation.latitude!), \"longitude\": \(studentLocation.longitude!),\"uniqueKey\": \"\(studentLocation.uniqueKey!)\", \"mediaURL\": \"\(studentLocation.mediaURL!)\"}".data(using: .utf8)
+            request.httpBody = "{ \"firstName\": \"\(studentLocation.firstName!)\", \"lastName\": \"\(studentLocation.lastName!)\",\"mapString\": \"\(studentLocation.mapString!)\",\"latitude\": \(studentLocation.latitude!), \"longitude\": \(studentLocation.longitude!),\"uniqueKey\": \"\(studentLocation.uniqueKey!)\", \"mediaURL\": \"\(studentLocation.mediaURL!)\"}".data(using: .utf8)
             
             let task = URLSession.shared.dataTask(with: request) { data, response, error in
                 guard (error == nil) else {

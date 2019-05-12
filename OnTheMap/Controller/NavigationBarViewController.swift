@@ -20,7 +20,10 @@ class NavigationBarViewController: UITabBarController {
         loginClient.logout { (success, message, error) in
             if success {
                 UtlisFunctions.resetDefaults()
-                self.dismiss(animated: true, completion: nil)
+                DispatchQueue.main.async {
+                    self.dismiss(animated: true, completion: nil)
+                }
+               
             }
             else {
                 self.displayAlert("Could not logout")

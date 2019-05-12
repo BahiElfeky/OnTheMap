@@ -39,6 +39,7 @@ class AddNewLocationController: UIViewController {
         showActivityIndicatory()
         guard !locationTextField.text!.isEmpty, !linkTextField.text!.isEmpty else {
             self.displayAlert("Loacation or Link fields are empty ")
+            self.activityView.stopAnimating()
             return
         }
         checkLocation(address: locationTextField.text!) { (success, message, error) in
@@ -47,6 +48,11 @@ class AddNewLocationController: UIViewController {
                     self.activityView.stopAnimating()
                     self.performSegue(withIdentifier: "sendLocation", sender: self)
                 }
+            } else {
+                DispatchQueue.main.async {
+                    self.activityView.stopAnimating()
+                }
+                
             }
         }
     }

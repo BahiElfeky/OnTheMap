@@ -26,6 +26,7 @@
 		27DB30D6227B2F48007143DC /* AddNewLocationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27DB30D5227B2F48007143DC /* AddNewLocationController.swift */; };
 		27DB30D8227B609F007143DC /* LocationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27DB30D7227B609F007143DC /* LocationTableViewCell.swift */; };
 		27DB30DA227B7521007143DC /* LocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27DB30D9227B7521007143DC /* LocationViewController.swift */; };
+		27DEF7B22288B4E0005E69C0 /* StudentLocationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27DEF7B12288B4E0005E69C0 /* StudentLocationModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +51,7 @@
 		27DB30D5227B2F48007143DC /* AddNewLocationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewLocationController.swift; sourceTree = "<group>"; };
 		27DB30D7227B609F007143DC /* LocationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationTableViewCell.swift; sourceTree = "<group>"; };
 		27DB30D9227B7521007143DC /* LocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationViewController.swift; sourceTree = "<group>"; };
+		27DEF7B12288B4E0005E69C0 /* StudentLocationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentLocationModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +70,7 @@
 			children = (
 				27B5ADCD2277378D0058A4F5 /* LoginClient.swift */,
 				273EB3AE2277691300765904 /* MapViewClient.swift */,
+				27DEF7B12288B4E0005E69C0 /* StudentLocationModel.swift */,
 				273EB3B022776AA500765904 /* StudentInfo.swift */,
 				27B5ADCB2277377A0058A4F5 /* Constants.swift */,
 			);
@@ -224,6 +227,7 @@
 				27AD7F762277510A001DD406 /* MapViewController.swift in Sources */,
 				27AD7F7A22775271001DD406 /* NavigationBarViewController.swift in Sources */,
 				27AD7F7E22775EA5001DD406 /* LaunchScreenViewController.swift in Sources */,
+				27DEF7B22288B4E0005E69C0 /* StudentLocationModel.swift in Sources */,
 				27B5ADCC2277377A0058A4F5 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

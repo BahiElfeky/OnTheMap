@@ -36,7 +36,8 @@ class TableViewController: UIViewController, UITableViewDelegate, UITableViewDat
         mapViewClient.getStudent { (data, error ) in
             
             if data != nil{
-                self.studentLocations = data as! [StudentInfo]
+//                self.studentLocations = data as! [StudentInfo]
+                self.studentLocations = StudentLocationModel.studentLocations
                 print(data)
                 
                 DispatchQueue.main.async {

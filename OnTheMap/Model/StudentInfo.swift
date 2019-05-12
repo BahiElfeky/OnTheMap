@@ -7,7 +7,7 @@
 //
 
 import Foundation
-class StudentInfo {
+struct StudentInfo {
     var firstName: String!
     var lastName: String!
     var latitude: Double!
